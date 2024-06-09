@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ crypto }} Details</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            padding-top: 50px;
+            background-color: #f8f9fa;
+        }
+        .crypto-detail {
+            max-width: 800px;
+            margin: auto;
+        }
+        .card {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+        .crypto-icon {
+            width: 70px;
+            height: 70px;
+            margin-bottom: 20px;
+        }
+        .list-group-item {
+            font-size: 1.2rem;
+        }
+        .btn {
+            font-size: 1.2rem;
+            padding: 10px 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center my-4">{{ crypto }} Szczegóły</h1>
+        <div class="crypto-detail text-center">
+            <img src="{{ url_for('static', filename=crypto.lower() + '.png') }}" alt="{{ crypto }} icon" class="crypto-icon">
+            <div class="card">
+                <div class="card-body">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <strong>Cena:</strong> {{ price_data['price'] }}
+                        </li>
+                        <li class="list-group-item">
+                            <strong>Wolumen:</strong> {{ price_data['volume'] }}
+                        </li>
+                        <li class="list-group-item">
+                            <strong>Zmiana procentowa:</strong> {{ price_data['percent_change'] }}
+                        </li>
+                        <li class="list-group-item">
+                            <strong>Kapitalizacja rynkowa:</strong> {{ price_data['market_cap'] }}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="text-center mt-3">
+                <a href="{{ url_for('main.index') }}" class="btn btn-primary">Back to Home</a>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
